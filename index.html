@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اختبار تفاعلي</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- الصفحة الرئيسية -->
+  <section id="home">
+    <div class="title-row">
+      <img src="logo.png" alt="شعار الموقع" class="logo">
+      <span class="site-name">اسم الموقع</span>
+    </div>
+    <div class="hero">
+      <p class="description">
+        هذا وصف مختصر عن الموقع ولماذا هذا الاختبار التفاعلي مفيد للمستخدم.
+      </p>
+      <button id="startBtn">ابدأ</button>
+    </div>
+
+    <div class="info-box">
+      <div class="info-left">
+        الأعضاء المشاركين: خالد، سالم، فهد
+      </div>
+      <div class="info-right">
+        هذا العمل تعاوني بين الأعضاء
+      </div>
+    </div>
+  </section>
+
+  <!-- شاشة تدوير الجوال -->
+  <section id="rotate" style="display:none;">
+    رجاءً اقلب الجوال لتجربة أفضل
+  </section>
+
+  <!-- منطقة اللعبة -->
+  <section id="game" style="display:none;">
+    <div id="score">النقاط: 100</div>
+    <div id="state">الحالة 1</div>
+    
+    <div id="gameArea">
+      <!-- الصور (ستتم تعبئتها ديناميكيًا حسب الحالة) -->
+      <div class="game-step" id="step1">
+        <div class="image-container">
+          <img src="" alt="صورة" class="game-image">
+          <div class="hotspot" id="hotspot1"></div>
+        </div>
+      </div>
+      <div class="game-step" id="step2">
+        <div class="image-container">
+          <img src="" alt="صورة" class="game-image">
+          <div class="hotspot" id="hotspot2"></div>
+        </div>
+      </div>
+      <div class="game-step" id="step3">
+        <div class="image-container">
+          <img src="" alt="صورة" class="game-image">
+          <div class="hotspot" id="hotspot3"></div>
+        </div>
+      </div>
+      <div class="game-step" id="step4">
+        <div class="image-container">
+          <img src="" alt="صورة" class="game-image">
+          <div class="hotspot" id="hotspot4"></div>
+        </div>
+      </div>
+      <div class="game-step" id="step5">
+        <div class="image-container">
+          <img src="" alt="صورة" class="game-image">
+          <div class="hotspot" id="hotspot5"></div>
+        </div>
+      </div>
+      <div class="game-step" id="step6">
+        <div class="image-container">
+          <img src="" alt="صورة" class="game-image">
+          <div class="hotspot" id="hotspot6"></div>
+        </div>
+      </div>
+
+      <!-- السؤال النهائي -->
+      <div class="question-container" id="finalQuestion" style="display:none;">
+        <p>هل تقبل العينة؟</p>
+        <button class="answer">نعم</button>
+        <button class="answer">لا</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
