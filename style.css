@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: white;
+}
+
+/* ===== الصفحة الرئيسية ===== */
+#home {
+  min-height: 100vh;
+  padding: 30px 20px;
+}
+
+/* الحاوية الرئيسية */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0f172a, #020617);
+}
+
+/* الخلفية الشفافة للشعار */
+.logo-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.15; /* شفافية */
+  z-index: 1;
+}
+.logo-bg img {
+  width: 250px; /* حجم الشعار */
+  height: auto;
+}
+
+/* النص والزر فوق الخلفية */
+.overlay-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+}
+.site-name {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+.description {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #cbd5e1;
+}
+
+/* زر البداية */
+#startBtn {
+  background: #22c55e;
+  color: #022c22;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+#startBtn:hover {
+  background: #16a34a;
+}
+
+.info-box {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: min(900px, 92vw);
+}
+.info-right, .info-left {
+  width: 50%;
+  font-size: 14px;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+/* ===== تنبيه تدوير الجوال (Overlay) ===== */
+#rotateNotice {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(2, 6, 23, 0.92);
+  color: #fff;
+  display: none; /* تُفعّلها الجافاسكربت عند الحاجة */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.rotate-content {
+  display: grid;
+  place-items: center;
+  gap: 16px;
+  max-width: 92vw;
+}
+
+/* حجم الرسم */
+.rotate-illustration {
+  display: block;
+  width: min(220px, 48vw);
+  height: auto;
+}
+
+/* حركة هزّة خفيفة للجوال */
+.rotate-illustration .phone {
+  transform-origin: 70px 70px; /* مركز الرسمة */
+  animation: phoneTilt 2.4s ease-in-out infinite;
+}
+
+/* دوران مستمر للسهم */
+.rotate-illustration .arrow {
+  transform-origin: 0 0; /* تم نقله إلى (70,70) في SVG */
+  animation: arrowSpin 2.6s linear infinite;
+}
+
+/* نصوص التنبيه */
+.rotate-text h2 {
+  font-size: clamp(18px, 5vw, 22px);
+  margin: 6px 0;
+}
+.rotate-text p {
+  font-size: clamp(14px, 3.8vw, 16px);
+  color: #e5e7eb;
+  opacity: .95;
+}
+
+/* حركات */
+@keyframes phoneTilt {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-10deg); }
+  40% { transform: rotate(12deg); }
+  60% { transform: rotate(-8deg); }
+  80% { transform: rotate(6deg); }
+}
+
+@keyframes arrowSpin {
+  0% { transform: rotate(0deg) translate(0,0); }
+  100% { transform: rotate(360deg) translate(0,0); }
+}
+
+/* ===== اللعبة ===== */
+.image-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
+.game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: repeating-linear-gradient(45deg, #0b1220, #0b1220 10px, #0f172a 10px, #0f172a 20px);
+}
+
+/* الأعلى */
+.top-bar {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  font-size: 16px;
+}
+
+/* السؤال */
+.question-box {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(0,0,0,0.65);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+}
+.answers button {
+  margin: 5px;
+  padding: 10px 30px;
+  border-radius: 20px;
+  border: none;
+  background: #22c55e;
+  color: #022c22;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ====== نافذة النتيجة (Modal) ====== */
+.modal[hidden] { display: none; }
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(2px);
+}
+.modal-card {
+  position: relative;
+  z-index: 1001;
+  width: min(520px, 92vw);
+  margin: 10vh auto 0 auto;
+  background: #0b1220;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 18px 20px;
+  text-align: center;
+}
+.modal-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.modal-card p { color: #e5e7eb; }
+.delta { color: #ef4444; margin: 10px 0; height: 20px; }
+button.primary {
+  background: #22c55e;
+  color: #022c22;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+button.primary:hover { background: #16a34a; }
+
+/* شاشة النهاية */
+.end-screen {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 16px;
+}
+.end-screen h2 { font-size: 28px; }
+.end-screen p { font-size: 18px; color: #e5e7eb; }
+
+/* احتياطي: في الوضع العمودي أظهر التنبيه وأخفي اللعبة */
+@media (orientation: portrait) {
+  #rotateNotice { display: flex !important; }
+  #game { display: none !important; }
+}
