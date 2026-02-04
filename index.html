@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- الصفحة الرئيسية -->
+<section id="home">
+  <div class="hero">
+    <!-- الخلفية الشفافة للشعار -->
+    <div class="logo-bg">
+      <img src="logo.png" class="logo">
+    </div>
+
+    <!-- النص والزر فوق الخلفية -->
+    <div class="overlay-text">
+      <h1 class="site-name">Laboratory simulation</h1>
+      <p class="description">
+        This is an interactive training platform for medical laboratory students.
+      </p>
+      <button id="startBtn">start</button>
+    </div>
+<!--معلومات اضافيه -->
+    <div class="info-box">
+      <div class="info-left">
+        الأعضاء المشاركين: ساره، سوزان، بشرى
+      </div>
+      <div class="info-right">
+        هذا العمل تعاوني بين الأعضاء
+      </div>
+       </div>      
+  </div>
+</section>
+
+
+  <!-- شاشة تدوير الجوال -->
+  <section id="rotateNotice" style="display:none;">
+    Flip your phone horizontally to view the game !!
+ </section>
+
+<!-- منطقة اللعبة -->
+
+
+ <section id="game" style="display:none;">
+  <div class="image-container">
+    <img id="gameImage" class="game-image">
+
+    <!-- الشريط العلوي -->
+      <div class="top-bar">
+      <div id="scoreText">النقاط: 100</div>
+      <div id="stateText">الحالة 1</div>
+    </div>
+
+    <!-- السؤال -->
+       <div class="question-box" id="questionBox" style="display:none;">
+      <p id="questionText">هل تقبل العينة؟</p>
+      <div class="answers">
+        <button onclick="answer(true)">نعم</button>
+        <button onclick="answer(false)">لا</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- نافذة النتيجة (Modal) -->
+  <div id="resultModal" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <h3 id="modalTitle"></h3>
+      <p id="modalReason"></p>
+      <div id="modalDelta" class="delta"></div>
+      <button id="modalContinue" class="primary">متابعة</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
