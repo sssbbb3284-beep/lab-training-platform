@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratory Simulation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- الصفحة الرئيسية -->
+  <section id="home">
+    <div class="hero">
+      <!-- الخلفية الشفافة للشعار -->
+      <div class="logo-bg">
+        <img src="logo.png" class="logo" alt="Logo" />
+      </div>
+      <!-- العنوان والنص والزر -->
+      <div class="overlay-text">
+        <h1 class="site-name">Laboratory simulation</h1>
+        <p class="description">
+          This is an interactive training platform for medical laboratory students.
+        </p>
+        <button id="startBtn">ابدأ</button>
+      </div>
+      <!-- معلومات إضافية -->
+      <div class="info-box">
+        <div class="info-left">
+          Some information about the website developers
+        </div>
+        <div class="info-right">
+          Some information about intern
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- شاشة تنبيه تدوير الجهاز -->
+  <section id="rotateNotice" style="display: none;">
+    <div class="rotate-content">
+      <!-- أيقونة جوال + سهم دوران (SVG) -->
+      <svg class="rotate-illustration" width="140" height="140" viewBox="0 0 140 140" aria-hidden="true">
+        <!-- إطار الجوال -->
+        <g class="phone">
+          <rect x="40" y="18" rx="12" ry="12" width="60" height="104" fill="none" stroke="#cbd5e1" stroke-width="4"/>
+          <rect x="48" y="30" width="44" height="76" rx="8" ry="8" fill="#0b1220" stroke="rgba(255,255,255,0.08)" />
+          <circle cx="70" cy="106" r="3" fill="#cbd5e1"/>
+        </g>
+        <!-- سهم دوران -->
+        <g class="arrow" transform="translate(70,70)">
+          <path d="M 0 -52 A 52 52 0 1 1 -36.77 -36.77" fill="none" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/>
+          <polygon points="-36,-36 -50,-40 -42,-28" fill="#22c55e"/>
+        </g>
+      </svg>
+      <div class="rotate-text">
+        <h2>Please turn your phone horizontally</h2>
+        <p>To get the best interactive gaming experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- منطقة اللعبة -->
+  <section id="game" style="display: none;">
+    <div class="image-container">
+      <!-- ✅ استبدلنا الصورة بفيديو + زر شفاف فوقه -->
+      <div class="video-stage">
+        <video id="gameVideo" class="game-video" preload="auto" playsinline webkit-playsinline></video>
+
+        <!-- زر شفاف لتشغيل الفيديو التالي.
+             ✳️ افتراضياً على اليمين قليلاً. غيّري القيم من JS داخل states.hotspots أو هنا إن رغبتِ.
+             ✳️ الحجم/الموضع بالنِّسَب المئوية. -->
+        <button id="videoHotspot"
+                class="hotspot"
+                aria-label="تشغيل الفيديو التالي">
+        </button>
+      </div>
+
+      <!-- الشريط العلوي -->
+      <div class="top-bar">
+        <div id="scoreText">النقاط: 100</div>
+        <div id="stateText">الحالة 1</div>
+      </div>
+
+      <!-- صندوق السؤال (❗️ نجعله ظاهر من البداية) -->
+      <div class="question-box" id="questionBox">
+        <p id="questionText">هل تقبل العيّنة؟</p>
+        <div class="answers">
+          <button id="answerYes">نعم</button>
+          <button id="answerNo">لا</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- نافذة النتيجة (Modal) -->
+  <div id="resultModal" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <h3 id="modalTitle"></h3>
+      <p id="modalReason"></p>
+      <div id="modalDelta" class="delta"></div>
+      <button id="modalContinue" class="primary">continuation</button>
+    </div>
+  </div>
+...
+<!-- نهاية المحتوى -->
+  <script src="script.js"></script>
+</body>
+</html>
