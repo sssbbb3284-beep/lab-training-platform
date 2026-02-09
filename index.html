@@ -57,7 +57,7 @@ body::before {
 #startBtn:hover { background-color:#ddd; }
 
 /* زر التالي */
-#nextBtn {
+ #nextBtn {
   display:none;
   position:absolute;
   border-radius:12px;
@@ -65,7 +65,16 @@ body::before {
   cursor:pointer;
   z-index:5;
   transition:0.2s;
+
+  background-color: rgba(255,255,255,0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 0 6px rgba(0,0,0,0.25);
+
+  color: black;
 }
+
 
 /* الفيديوهات */
 video {
@@ -279,12 +288,6 @@ phases.forEach((phaseVideos)=>{
       nextBtn.style.left = pos.left;
       nextBtn.style.width = pos.width;
       nextBtn.style.height = pos.height;
-
-      nextBtn.style.backgroundColor = "rgba(255,255,255,0.2)";
-      nextBtn.style.backdropFilter = "blur(px)";
-      nextBtn.style.webkitBackdropFilter = "blur(px)";
-      nextBtn.style.border = "1px solid rgba(255,255,255,0.25)";
-      nextBtn.style.color = "black";
       nextBtn.style.display = "block";
 
       phaseEnded = true;
@@ -321,6 +324,7 @@ alertBtn.onclick = ()=>{
 
 </body>
 </html>
+
 
 
 
