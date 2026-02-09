@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <title>Prototype</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <style>
-/* إعدادات أساسية للصفحة */
+
+/* ----- إعدادات الصفحة ----- */
 body {
   margin:0;
   padding:0;
@@ -16,13 +18,14 @@ body {
   overflow:hidden;
   position:relative;
 }
-/*شعار الخلفيه */
+
+/* ----- شعار الخلفية ----- */
 body::before {
   content:"";
   position:absolute;
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%);
+  transform:translate(-50%, -50%);
   width:300px;
   height:300px;
   background-image:url('logo.png');
@@ -31,63 +34,34 @@ body::before {
   opacity:0.1;
   z-index:1;
 }
-/* الكتابه 1 في الصفحه الرئيسيه */
+
+/* ----- صفحة البداية ----- */
 .welcome {
   position:absolute;
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%);
+  transform:translate(-50%, -50%);
   text-align:center;
   color:white;
   z-index:2;
   width:90%;
 }
-.welcome h1 { font-size:50px;margin-bottom:20px; }
-.welcome p { font-size:20px;margin-bottom:40px; }
-/* زر البداية */
+.welcome h1 { font-size:50px; margin-bottom:20px; }
+.welcome p  { font-size:20px; margin-bottom:40px; }
+
+/* زر START */
 #startBtn {
   padding:15px 50px;
   font-size:22px;
-  background-color:#ffffff;
+  background-color:white;
   color:#001f3f;
   border:none;
   border-radius:10px;
   cursor:pointer;
 }
 #startBtn:hover { background-color:#ddd; }
-/* مربع المعلومات */
-.membersBox {
-  margin-top:20px;
-  width:80%;
-  height:100px;
-  background-color:rgba(255,255,255,0.2);
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  padding:0 20px;
-  color:white;
-  text-align:center;
-  margin-left:auto;
-  margin-right:auto;
-}
-.info-box {
-  position: relative;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 22px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  width: min(900px, 92vw);
-}
-.info-right, .info-left {
-  width: 50%;
-  font-size: 14px;
-  color: #e5e7eb;
-  line-height: 1.6;
-}
-/* زر التالي */
+
+/* ----- زر NEXT (نسخة ثابتة نهائية تعمل على الجوال) ----- */
 #nextBtn {
   display:none;
   position:absolute;
@@ -97,68 +71,41 @@ body::before {
   z-index:5;
   transition:0.2s;
 
-  /* ✨ الشفافية الصحيحة اللي تبين اللي وراها */
+  /* ✨ خلفية شبه شفافة تبين الخلفية */
   background-color: rgba(255,255,255,0.28);
+
+  /* ✨ البلور لإظهار الخلفية بدون إخفائها */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 
-  /* ✨ تحديد خفيف يخلّيه بارز */
+  /* ✨ حدود خفيفة */
   border: 1px solid rgba(255,255,255,0.25);
 
-  /* ✨ يوضح الزر بدون ما يغطي الخلفية */
+  /* ✨ ظل بسيط يبرز الزر */
   box-shadow: 0 0 6px rgba(0,0,0,0.25);
 
+  /* ✨ النص */
   color: black;
 }
-#nextBtn:hover { background-color: rgba(255,255,255,0.4); }
 
-/* ===================== الفيدوهات ===================== */
+
+/* ----- الفيديوهات ----- */
 video {
   width:100%;
   height:100%;
   object-fit:contain;
-  display:none;            /* تُعرض فقط عند التشغيل عبر JS */
+  display:none;
   position:absolute;
   top:0;
   left:0;
   z-index:2;
-
-  /*  إخفاء أي واجهة او حدود للفيدوهات */
-  outline: none;
-  border: none;
-  background: transparent;
+  outline:none;
+}
+video::-webkit-media-controls {
+  display:none !important;
 }
 
-/*  إخفاء واجهة الفيديو في المتصفحات المبنية على WebKit (iOS/Safari/Chrome Android) */
-video::-webkit-media-controls,
-video::-webkit-media-controls-enclosure,
-video::-webkit-media-controls-panel,
-video::-webkit-media-controls-play-button,
-video::-webkit-media-controls-start-playback-button,
-video::-webkit-media-controls-timeline,
-video::-webkit-media-controls-current-time-display,
-video::-webkit-media-controls-time-remaining-display,
-video::-webkit-media-controls-mute-button,
-video::-webkit-media-controls-volume-slider,
-video::-webkit-media-controls-fullscreen-button,
-video::-internal-media-controls-download-button {
-  display: none !important;
-  -webkit-appearance: none;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* كمان تحكم في محركات أخرى */
-video::-moz-media-controls,
-video::-ms-media-controls {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* السؤال */
+/* ----- شريط السؤال ----- */
 .questionBar {
   position:absolute;
   bottom:20px;
@@ -169,16 +116,21 @@ video::-ms-media-controls {
   color:white;
   padding:15px;
   border-radius:10px;
-  display:flex;
+  display:none;
   justify-content:center;
   align-items:center;
   z-index:5;
-  text-align:center;
-  display:none;
 }
-.questionBar span { margin-right:15px; }
-.questionBar button { margin:0 15px; padding:10px 25px; font-size:16px; border:none; border-radius:8px; cursor:pointer; }
-/* شريط رقم الحاله والنقاط */
+.questionBar button {
+  margin:0 15px;
+  padding:10px 25px;
+  font-size:16px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* ----- شريط النقاط ----- */
 .statusBar {
   position:absolute;
   top:10px;
@@ -194,11 +146,14 @@ video::-ms-media-controls {
   z-index:6;
   display:none;
 }
-/* مربع التنبيه */
+
+/* ----- مربع التنبيه ----- */
 .alertBox {
   position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   background-color:rgba(0,0,0,0.85);
   color:white;
   display:none;
@@ -206,179 +161,100 @@ video::-ms-media-controls {
   align-items:center;
   flex-direction:column;
   z-index:10;
-  text-align:center;
 }
-.alertBox button { margin-top:20px; padding:10px 30px; font-size:18px; cursor:pointer; border-radius:8px; border:none; }
-/* ===== تنبيه تدوير الجهاز ===== */
-#rotateNotice {
-  position: fixed;
-  inset: 0;
-  z-index:2000;
-  background: rgba(2,6,23,0.92);
-  color: #fff;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 24px;
+.alertBox button {
+  margin-top:20px;
+  padding:10px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
 }
-.rotate-content {
-  display: grid;
-  place-items: center;
-  gap: 16px;
-  max-width: 92vw;
-}
-.rotate-illustration {
-  display: block;
-  width: min(220px, 48vw);
-  height: auto;
-}
-.rotate-illustration .phone {
-  transform-origin: 70px 70px;
-  animation: phoneTilt 2.4s ease-in-out infinite;
-}
-.rotate-illustration .arrow {
-  transform-origin: 0 0;
-  animation: arrowSpin 2.6s linear infinite;
-}
-.rotate-text h2 { font-size: clamp(18px,5vw,22px); margin:6px 0; }
-.rotate-text p { font-size: clamp(14px,3.8vw,16px); color:#e5e7eb; opacity:0.95; }
-@keyframes phoneTilt {
-  0%,100% { transform: rotate(0deg); }
-  20% { transform: rotate(-10deg); }
-  40% { transform: rotate(12deg); }
-  60% { transform: rotate(-8deg); }
-  80% { transform: rotate(6deg); }
-}
-@keyframes arrowSpin {
-  0% { transform: rotate(0deg) translate(0,0); }
-  100% { transform: rotate(360deg) translate(0,0); }
-}
-@media (max-width: 600px) {
-  .welcome h1 { font-size: 32px; }
-  .welcome p { font-size: 16px; }
-  #startBtn { font-size: 18px; padding: 12px 35px; }
-  .info-box {
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-  }
-}
+
 </style>
 </head>
+
 <body>
-<!-- الصفحة الرئيسية -->
+
+<!-- صفحة البداية -->
 <div class="welcome" id="welcome">
   <h1>Laboratory simulation</h1>
   <p>This is an interactive training platform for medical laboratory students.</p>
   <button id="startBtn">START</button>
-  <!-- معلومات السفليه -->
-  <div class="info-box">
-    <div class="info-left">
-      Some information about the website developers 
-    </div>
-    <div class="info-right">
-      Some information about intern 
-    </div>
-  </div>
 </div>
-</section>
+
 <!-- زر التالي -->
 <button id="nextBtn"></button>
+
 <!-- شريط السؤال -->
 <div class="questionBar" id="questionBar">
   <span>Do you accept samples?</span>
   <button id="yesBtn">Yes</button>
   <button id="noBtn">No</button>
 </div>
+
 <!-- شريط الحالة -->
 <div class="statusBar" id="statusBar">
   <span id="points">100</span>
   <span id="status">case 1</span>
 </div>
+
 <!-- مربع التنبيه -->
 <div class="alertBox" id="alertBox">
   <h2 id="alertMsg"></h2>
   <button id="alertBtn">continuation</button>
 </div>
-<!-- شاشة تنبيه تدوير الجهاز -->
-<section id="rotateNotice">
-  <div class="rotate-content">
-    <svg class="rotate-illustration" width="140" height="140" viewBox="0 0 140 140" aria-hidden="true">
-      <g class="phone">
-        <rect x="40" y="18" rx="12" ry="12" width="60" height="104" fill="none" stroke="#cbd5e1" stroke-width="4"/>
-        <rect x="48" y="30" width="44" height="76" rx="8" ry="8" fill="#0b1220" stroke="rgba(255,255,255,0.08)" />
-        <circle cx="70" cy="106" r="3" fill="#cbd5e1"/>
-      </g>
-      <g class="arrow" transform="translate(70,70)">
-        <path d="M 0 -52 A 52 52 0 1 1 -36.77 -36.77" fill="none" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/>
-        <polygon points="-36,-36 -50,-40 -42,-28" fill="#22c55e"/>
-      </g>
-    </svg>
-    <div class="rotate-text">
-      <h2>Please turn your phone horizontally</h2>
-      <p>For the best interactive experience.</p>
-    </div>
-  </div>
-</section>
+
 <!-- الفيديوهات -->
 <div id="phases">
-  <!-- الحالة الأولى -->
-  <video class="phase1" src="A.mp4" playsinline></video>
-  <video class="phase1" src="B.mp4" playsinline></video>
-  <video class="phase1" src="C.mp4" playsinline></video>
-  <video class="phase1" src="D.mp4" playsinline></video>
-  <video class="phase1" src="E.mp4" playsinline></video>
-  <video class="phase1" src="F.mp4" playsinline></video>
-  <video class="phase1" src="G.mp4" playsinline></video>
-  <!-- الحالة الثانية -->
-  <video class="phase2" src="A.mp4" playsinline></video>
-  <video class="phase2" src="B.mp4" playsinline></video>
-  <video class="phase2" src="C.mp4" playsinline></video>
-  <video class="phase2" src="D.mp4" playsinline></video>
-  <video class="phase2" src="E.mp4" playsinline></video>
-  <video class="phase2" src="F.mp4" playsinline></video>
-  <video class="phase2" src="P.mp4" playsinline></video>
+
+  <!-- المرحلة الأولى -->
+  <video class="phase1" src="A.mp4"></video>
+  <video class="phase1" src="B.mp4"></video>
+  <video class="phase1" src="C.mp4"></video>
+  <video class="phase1" src="D.mp4"></video>
+  <video class="phase1" src="E.mp4"></video>
+  <video class="phase1" src="F.mp4"></video>
+  <video class="phase1" src="G.mp4"></video>
+
+  <!-- المرحلة الثانية -->
+  <video class="phase2" src="A.mp4"></video>
+  <video class="phase2" src="B.mp4"></video>
+  <video class="phase2" src="C.mp4"></video>
+  <video class="phase2" src="D.mp4"></video>
+  <video class="phase2" src="E.mp4"></video>
+  <video class="phase2" src="F.mp4"></video>
+  <video class="phase2" src="P.mp4"></video>
+
 </div>
 
 <script>
-// ================== العناصر الرئيسية ==================
-const startBtn = document.getElementById("startBtn");
-const welcome = document.getElementById("welcome");
-const nextBtn = document.getElementById("nextBtn");
-const questionBar = document.getElementById("questionBar");
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const statusBar = document.getElementById("statusBar");
-const pointsEl = document.getElementById("points");
-const statusEl = document.getElementById("status");
-const alertBox = document.getElementById("alertBox");
-const alertMsg = document.getElementById("alertMsg");
-const alertBtn = document.getElementById("alertBtn");
-const rotateNotice = document.getElementById("rotateNotice");
 
-// ================== المتغيرات العامة ==================
+/* عناصر الصفحة */
+const startBtn   = document.getElementById("startBtn");
+const welcome    = document.getElementById("welcome");
+const nextBtn    = document.getElementById("nextBtn");
+const questionBar = document.getElementById("questionBar");
+const yesBtn     = document.getElementById("yesBtn");
+const noBtn      = document.getElementById("noBtn");
+const statusBar  = document.getElementById("statusBar");
+const pointsEl   = document.getElementById("points");
+const statusEl   = document.getElementById("status");
+const alertBox   = document.getElementById("alertBox");
+const alertMsg   = document.getElementById("alertMsg");
+const alertBtn   = document.getElementById("alertBtn");
+
 let currentPhase = 0;
 let currentVideoIndex = 0;
 let totalPoints = 100;
-let phaseEnded = false;
-let started = false;
-let earlyAlert = false;
-let resumeTime = 0;
 
-// ================== تجميع الفيديوهات حسب المرحلة ==================
+/* جمع الفيديوهات */
 const phases = [
   Array.from(document.querySelectorAll(".phase1")),
   Array.from(document.querySelectorAll(".phase2"))
 ];
 
-// ================== إعدادات كل مرحلة ==================
-const phaseSettings = [
-  {correctAnswer:"No", wrongMessage:"❌Incorrect answer, wrong tupe", pointsDeduct:10},
-  {correctAnswer:"Yes", wrongMessage:"❌Incorrect answer, sample acceptable", pointsDeduct:10}
-];
-
-// ================== أماكن وأحجام زر التالي ==================
+/* أماكن زر NEXT */
 const buttonPositions = [
   {top:"50%", left:"49%", width:"5%", height:"5%"},
   {top:"20%", left:"27%", width:"15%", height:"25%"},
@@ -388,170 +264,84 @@ const buttonPositions = [
   {top:"20%", left:"39%", width:"3%", height:"20%"},
   {top:"50%", left:"50%", width:"5%", height:"5%"}
 ];
-const nextBtnStyles = [
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1}
-];
 
-// ================== كشف اتجاه الشاشة ==================
-function isLandscape(){ return window.innerWidth > window.innerHeight; }
-function checkOrientation(){
-  const landscape = isLandscape();
-  rotateNotice.style.display = landscape ? "none" : "flex";
-  const gameVideos = phases.flat();
-  gameVideos.forEach(v => { v.style.display = landscape ? v.style.display : "none"; v.pause(); });
-  questionBar.style.display = (landscape && started) ? "flex" : "none";
-  statusBar.style.display = (landscape && started) ? "flex" : "none";
-  return landscape;
-}
-window.addEventListener("resize", checkOrientation);
-window.addEventListener("orientationchange", () => setTimeout(checkOrientation,50));
-
-// ================== أدوات مساعدة ==================
-function getCurrentVideo(){
-  const videos = phases[currentPhase];
-  return videos[currentVideoIndex];
-}
-
-// ================== بدء المشاهدة ==================
-startBtn.addEventListener("click", () => {
-  if(!checkOrientation()){ return; } // إذا عمودي، إظهار التنبيه فقط
-  started = true;
+/* تشغيل البداية */
+startBtn.onclick = () => {
   welcome.style.display = "none";
   questionBar.style.display = "flex";
   statusBar.style.display = "flex";
   playVideo();
-});
+};
 
-// ================== دالة تشغيل الفيديو ==================
-function playVideo(){
+/* تشغيل فيديو */
+function playVideo() {
   const videos = phases[currentPhase];
+
   videos.forEach(v => { v.pause(); v.style.display="none"; });
-  if(currentVideoIndex < videos.length){
-    const vid = videos[currentVideoIndex];
-    vid.style.display="block";
-    vid.play();
-    updateStatus();
-    phaseEnded = false;
-    earlyAlert = false;
-    enableQuestion();
-  }
+
+  const vid = videos[currentVideoIndex];
+  vid.style.display = "block";
+  vid.play();
+
+  updateStatus();
 }
 
-// ================== تحديث الحالة ==================
-function updateStatus(){
+/* تحديث الحالة */
+function updateStatus() {
   statusEl.textContent = `case ${currentPhase+1}`;
   pointsEl.textContent = totalPoints;
 }
 
-// ================== أحداث انتهاء الفيديو ==================
-phases.forEach((phaseVideos,pIndex)=>{
-  phaseVideos.forEach((video,vIndex)=>{
-    video.addEventListener("ended", ()=>{
-      if(vIndex === phaseVideos.length-1){ phaseEnded=true; enableQuestion(); }
-      if(vIndex < buttonPositions.length){
-        const pos = buttonPositions[vIndex];
-        nextBtn.style.top = pos.top;
-        nextBtn.style.left = pos.left;
-        nextBtn.style.width = pos.width;
-        nextBtn.style.height = pos.height;
-        const style = nextBtnStyles[vIndex];
-        nextBtn.style.backgroundColor = `rgba(255,255,255,${style.bg})`;
-        nextBtn.style.border = `2px solid rgba(0,0,0,${style.border})`;
-        nextBtn.style.color = `rgba(0,0,0,${style.text})`;
-        nextBtn.style.display="block";
-      }
+/* عند انتهاء الفيديو */
+phases.forEach((phaseVideos) => {
+
+  phaseVideos.forEach((video, vIndex) => {
+
+    video.addEventListener("ended", () => {
+
+      const pos = buttonPositions[vIndex];
+
+      nextBtn.style.top = pos.top;
+      nextBtn.style.left = pos.left;
+      nextBtn.style.width = pos.width;
+      nextBtn.style.height = pos.height;
+
+      /* ✨ ما نغير أي تنسيق للزر هنا */
+      nextBtn.style.display = "block";
     });
+
   });
+
 });
 
-// ================== تفعيل/إيقاف سؤال نعم/لا ==================
-function enableQuestion(){
-  yesBtn.disabled = false;
-  noBtn.disabled = false;
-}
-
-// ================== أحداث اختيار نعم/لا ==================
-yesBtn.addEventListener("click", ()=>{
-  if(!phaseEnded){
-    const vid = getCurrentVideo();
-    resumeTime = vid.currentTime;
-    vid.pause();
-    earlyAlert = true;
-    alertMsg.textContent = "‼️ Not all procedures have been completed‼️";
-    alertBtn.textContent = "Continue";
-    alertBox.style.display = "flex";
-    return;
-  }
-  const s = phaseSettings[currentPhase];
-  if("Yes" !== s.correctAnswer){
-    totalPoints -= s.pointsDeduct;
-    alertMsg.textContent=s.wrongMessage;
-  } else {
-    alertMsg.textContent="correct!";
-  }
-  alertBtn.textContent = "continuation";
-  alertBox.style.display="flex";
-});
-
-noBtn.addEventListener("click", ()=>{
-  if(!phaseEnded){
-    const vid = getCurrentVideo();
-    resumeTime = vid.currentTime;
-    vid.pause();
-    earlyAlert = true;
-    alertMsg.textContent = "‼️Not all procedures have been completed ‼️";
-    alertBtn.textContent = "Continue";
-    alertBox.style.display = "flex";
-    return;
-  }
-  const s = phaseSettings[currentPhase];
-  if("No" !== s.correctAnswer){
-    totalPoints -= s.pointsDeduct;
-    alertMsg.textContent=s.wrongMessage;
-  } else {
-    alertMsg.textContent="correct!";
-  }
-  alertBtn.textContent = "continuation";
-  alertBox.style.display = "flex";
-});
-
-// ================== استمرار بعد التنبيه ==================
-alertBtn.addEventListener("click", ()=>{
-  if(earlyAlert){
-    alertBox.style.display = "none";
-    const vid = getCurrentVideo();
-    try { vid.currentTime = resumeTime } catch(e){}
-    vid.play();
-    earlyAlert = false;
-    return;
-  }
-  alertBox.style.display="none";
-  currentPhase++;
-  if(currentPhase < phases.length){
-    currentVideoIndex=0;
-    playVideo();
-  } else {
-    questionBar.style.display="none";
-    statusBar.style.display="none";
-    alertMsg.textContent=`👏All cases are complete! Your total points : ${totalPoints}`;
-    alertBtn.style.display = "none";
-    alertBox.style.display="flex";
-  }
-});
-
-// ================== زر التالي ==================
-nextBtn.addEventListener("click", ()=>{
-  nextBtn.style.display="none";
+/* زر NEXT */
+nextBtn.onclick = () => {
+  nextBtn.style.display = "none";
   currentVideoIndex++;
   playVideo();
-});
-</script>
-</body>
+};
 
+/* YES / NO */
+yesBtn.onclick = noBtn.onclick = () => {
+  alertMsg.textContent = "Correct!";
+  alertBox.style.display = "flex";
+};
+
+alertBtn.onclick = () => {
+  alertBox.style.display = "none";
+  currentPhase++;
+
+  if (currentPhase < phases.length) {
+    currentVideoIndex = 0;
+    playVideo();
+  } else {
+    alertMsg.textContent = "All cases complete!";
+    alertBtn.style.display = "none";
+    alertBox.style.display = "flex";
+  }
+};
+
+</script>
+
+</body>
 </html>
