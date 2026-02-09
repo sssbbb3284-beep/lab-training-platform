@@ -238,15 +238,7 @@ const buttonPositions = [
   {top:"20%", left:"39%", width:"3%", height:"20%"},
   {top:"50%", left:"50%", width:"5%", height:"5%"}
 ];
-  const nextBtnStyles = [
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1},
-  {bg:0.5, border:0, text:1}
-];
+
 
 
 /* تشغيل المرحلة */
@@ -288,11 +280,10 @@ phases.forEach((phaseVideos)=>{
       nextBtn.style.width = pos.width;
       nextBtn.style.height = pos.height;
 
-      nextBtn.style.backgroundColor = "rgba(255,255,255,0.32)";
-      nextBtn.style.backdropFilter = "blur(6px)";
-      nextBtn.style.webkitBackdropFilter = "blur(6px)";
+      nextBtn.style.backgroundColor = "rgba(255,255,255,0.2)";
+      nextBtn.style.backdropFilter = "blur(px)";
+      nextBtn.style.webkitBackdropFilter = "blur(px)";
       nextBtn.style.border = "1px solid rgba(255,255,255,0.25)";
-      nextBtn.style.boxShadow = "0 0 6px rgba(0,0,0,0.25)";
       nextBtn.style.color = "black";
       nextBtn.style.display = "block";
 
@@ -330,5 +321,6 @@ alertBtn.onclick = ()=>{
 
 </body>
 </html>
+
 
 
