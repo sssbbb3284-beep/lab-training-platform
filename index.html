@@ -96,7 +96,8 @@ body::before {
   cursor:pointer;
   z-index:5;
 }
-#nextBtn:hover { background-color: rgba(255,255,255,0.4); }
+
+#nextBtn:hover { background-color: rgba(255,255,255,0.5); }
 
 /* ===================== الفيدوهات ===================== */
 video {
@@ -447,7 +448,9 @@ phases.forEach((phaseVideos,pIndex)=>{
         nextBtn.style.width = pos.width;
         nextBtn.style.height = pos.height;
         const style = nextBtnStyles[vIndex];
-        nextBtn.style.backgroundColor = `rgba(255,255,255,${style.bg})`;
+        nextBtn.style.backgroundColor = "rgba(255,255,255,0.75)";
+        nextBtn.style.backdropFilter = "blur(3px)";
+        nextBtn.style.webkitBackdropFilter = "blur(3px)";
         nextBtn.style.border = `2px solid rgba(0,0,0,${style.border})`;
         nextBtn.style.color = `rgba(0,0,0,${style.text})`;
         nextBtn.style.display="block";
@@ -541,3 +544,4 @@ nextBtn.addEventListener("click", ()=>{
 </body>
 
 </html>
+
