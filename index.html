@@ -448,11 +448,11 @@ phases.forEach((phaseVideos,pIndex)=>{
         nextBtn.style.width = pos.width;
         nextBtn.style.height = pos.height;
         const style = nextBtnStyles[vIndex];
-        nextBtn.style.backgroundColor = "rgba(255,255,255,0.4)";
-        nextBtn.style.backdropFilter = "blur(3px)";
-        nextBtn.style.webkitBackdropFilter = "blur(3px)";
-        nextBtn.style.border = `2px solid rgba(0,0,0,${style.border})`;
-        nextBtn.style.color = `rgba(0,0,0,${style.text})`;
+        nextBtn.style.backgroundColor = "rgba(255,255,255,0.55)";
+        nextBtn.style.backdropFilter = "blur(4px)";
+        nextBtn.style.webkitBackdropFilter = "blur(4px)";
+        nextBtn.style.border = "1px solid rgba(255,255,255,0.35)";
+        nextBtn.style.boxShadow = "0 0 8px rgba(255,255,255,0.35)";
         nextBtn.style.display="block";
       }
     });
@@ -544,6 +544,7 @@ nextBtn.addEventListener("click", ()=>{
 </body>
 
 </html>
+
 
 
 
