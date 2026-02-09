@@ -91,10 +91,24 @@ body::before {
 #nextBtn {
   display:none;
   position:absolute;
-  border-radius:8px;
+  border-radius:12px;
   font-size:16px;
   cursor:pointer;
   z-index:5;
+  transition:0.2s;
+
+  /* ✨ الشفافية الصحيحة اللي تبين اللي وراها */
+  background-color: rgba(255,255,255,0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  /* ✨ تحديد خفيف يخلّيه بارز */
+  border: 1px solid rgba(255,255,255,0.25);
+
+  /* ✨ يوضح الزر بدون ما يغطي الخلفية */
+  box-shadow: 0 0 6px rgba(0,0,0,0.25);
+
+  color: black;
 }
 #nextBtn:hover { background-color: rgba(255,255,255,0.4); }
 
@@ -539,4 +553,5 @@ nextBtn.addEventListener("click", ()=>{
 });
 </script>
 </body>
+
 </html>
